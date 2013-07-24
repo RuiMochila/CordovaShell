@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.3.2.min.css"/>
+        <script type="text/javascript" charset="utf-8" src="js/vendor/jquery-1.10.2.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/index.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/vendor/LAB.min.js"></script>
+        <script type="text/javascript">
+        $LAB
+        .wait(function () {
+            // $("#page-home").on("pageinit", function() {
+            //     alert("pageinit");
+            //     $("#jquery-output").html("Pageinit event");
+            // })
+            $(document).on('pageinit', '#page-home',  function(){
+                alert("pageinit");
+                $("#jquery-output").html("Pageinit event");
+            });
+        })
+        .wait(function (){
+            // IMPORTANT: This must execute before jQueryMobile is loaded!
+            $(document).bind("mobileinit", function() {
+                alert("mobileinit","info");
+                // Placeholder for framework settings overrides
+                $.mobile.allowCrossDomainPages = true;
+                $.support.cors = true;
+            });
+        })
+        .script("js/vendor/jquery.mobile-1.3.2.min.js")
+        .wait(function () {
+            // When ALL scripts have been loaded AND executed:                  
+        });
+        </script>
+        <title>Hello World</title>
+        <!-- <link rel="stylesheet" type="text/css" href="css/index.css" /> -->
+        
+        <script type="text/javascript" charset="utf-8">
+            // Espera o Cordova Carregar        
+            document.addEventListener("deviceready", onDeviceReady, false);
+            function onDeviceReady() {
+                $("#cordova-output").html("Hello, World! Cordova Device ir Ready!");
+            }
+        </script>
+        
+    </head>
+    <body> <!-- ponderar usar o onload event -->
+        <div data-role="page" id="page-home">
+            <div data-role="header">
+                <h1>Cordova Demo</h1>
+            </div>
+            <div id="content" data-role="content">
+                <div id="cordova-output"></div>
+                <div id="jquery-output"></div>
+            </div>
+            <div data-role="footer">
+                Footer
+            </div>
+        </div>
+    </body>
+</html>
