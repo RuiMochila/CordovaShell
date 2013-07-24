@@ -28,7 +28,35 @@
         })
         .script("js/vendor/jquery.mobile-1.3.2.min.js")
         .wait(function () {
-            // When ALL scripts have been loaded AND executed:                  
+            // When ALL scripts have been loaded AND executed: 
+            
+            $(function() {
+                setTimeout(hideSplash, 2000);
+            });
+            
+            $(document).on("pagebeforechange", function(e,ob) {
+                console.log($.mobile.urlHistory.stack);
+            //     if(ob.toPage && ob.toPage[0].id === "splash") {
+            //         if(!e.isPropagationStopped()){
+            //             console.log(e);
+            //             e.stopPropagation();
+            //             e.preventDefault();
+            //         }
+            //         //O back to splash fica pendurado aqui e quando carrego a próxima vez ele quer voltar para o splash
+            //     }
+            });
+            function hideSplash() {
+                $.mobile.changePage("#page-home", "fade");
+                $.mobile.urlHistory.stack[0].hash = $.mobile.urlHistory.stack[1].hash
+                $.mobile.urlHistory.stack[0].pageUrl = $.mobile.urlHistory.stack[1].pageUrl
+                $.mobile.urlHistory.stack[0].url = $.mobile.urlHistory.stack[1].url
+                // $.mobile.urlHistory.stack.pop();
+                // $.mobile.urlHistory.stack = $.mobile.urlHistory.stack.slice(1, 2);
+                // $.mobile.urlHistory.activeIndex = $.mobile.urlHistory.activeIndex-1;
+                // console.log($.mobile.urlHistory.stack.slice(1, 2));
+                // console.log($.mobile.urlHistory.stack.slice(1, 2));
+                // $.mobile.urlHistory.stack = $.mobile.urlHistory.stack.slice(1, 2);
+            }                
         });
         </script>
         <title>Hello World</title>
@@ -43,6 +71,11 @@
         
     </head>
     <body> <!-- ponderar usar o onload event -->
+        <div data-role="page" data-theme="b" id="splash" style="background-color: #green;"> 
+            <div class="splash">
+                <img src="http://jquerymobile.com/demos/1.0a4.1/docs/_assets/images/jquery-logo.png" alt="splash" />
+            </div>
+        </div>
         <div data-role="page" id="page-home">
             <div data-role="header" data-id="header" data-position="fixed">
                 <h3>Cordova Demo</h1>
@@ -55,9 +88,9 @@
             <div data-role="footer" data-id="footer" data-position="fixed">
                 <div data-role="navbar">
                      <ul>
-                     <li><a href="#">Page 1</a></li>
-                     <li><a href="#">Page 2</a></li>
-                     <li><a href="#">Page 3</a></li>
+                     <li><a href="#page-home" >Page 1</a></li>
+                     <li><a href="#page-2" data-role="button" data-transition="slide" data-inline="true">Page 2</a></li>
+                     <li><a href="#page-3" >Page 3</a></li>
                      </ul>
                 </div><!-- /navbar -->
             </div>
@@ -106,9 +139,9 @@
             <div data-role="footer" data-id="footer" data-position="fixed">
                 <div data-role="navbar">
                      <ul>
-                     <li><a href="#">Page 1</a></li>
-                     <li><a href="#">Page 2</a></li>
-                     <li><a href="#">Page 3</a></li>
+                     <li><a href="#page-home" >Page 1</a></li>
+                     <li><a href="#page-2" data-role="button" data-transition="slide" data-inline="true">Page 2</a></li>
+                     <li><a href="#page-3" >Page 3</a></li>
                      </ul>
                 </div><!-- /navbar -->
             </div>
