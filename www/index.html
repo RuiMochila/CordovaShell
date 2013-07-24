@@ -1,22 +1,4 @@
 <!DOCTYPE html>
-<!--
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
 <html>
     <head>
         <meta charset="utf-8" />
@@ -30,19 +12,15 @@
         <script type="text/javascript">
         $LAB
         .wait(function () {
-            // $("#page-home").on("pageinit", function() {
-            //     alert("pageinit");
-            //     $("#jquery-output").html("Pageinit event");
-            // })
             $(document).on('pageinit', '#page-home',  function(){
-                alert("pageinit");
+                // alert("pageinit");
                 $("#jquery-output").html("Pageinit event");
             });
         })
         .wait(function (){
             // IMPORTANT: This must execute before jQueryMobile is loaded!
             $(document).bind("mobileinit", function() {
-                alert("mobileinit","info");
+                // alert("mobileinit","info");
                 // Placeholder for framework settings overrides
                 $.mobile.allowCrossDomainPages = true;
                 $.support.cors = true;
@@ -54,7 +32,6 @@
         });
         </script>
         <title>Hello World</title>
-        <!-- <link rel="stylesheet" type="text/css" href="css/index.css" /> -->
         
         <script type="text/javascript" charset="utf-8">
             // Espera o Cordova Carregar        
@@ -67,15 +44,73 @@
     </head>
     <body> <!-- ponderar usar o onload event -->
         <div data-role="page" id="page-home">
-            <div data-role="header">
-                <h1>Cordova Demo</h1>
+            <div data-role="header" data-id="header" data-position="fixed">
+                <h3>Cordova Demo</h1>
             </div>
             <div id="content" data-role="content">
                 <div id="cordova-output"></div>
                 <div id="jquery-output"></div>
+                <a href="#page-2" data-role="button" data-transition="slide" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true">Page 2</a>
             </div>
-            <div data-role="footer">
-                Footer
+            <div data-role="footer" data-id="footer" data-position="fixed">
+                <div data-role="navbar">
+                     <ul>
+                     <li><a href="#">Page 1</a></li>
+                     <li><a href="#">Page 2</a></li>
+                     <li><a href="#">Page 3</a></li>
+                     </ul>
+                </div><!-- /navbar -->
+            </div>
+        </div>
+
+        <div data-role="page" id="page-2">
+            <div data-role="header" data-id="header" data-position="fixed">
+                <h3>Cordova Demo</h1>
+            </div>
+            <div id="content" data-role="content">
+                Im the page number 2
+                <a href="#" 
+                    data-role="button" 
+                    data-transition="slide" 
+                    data-inline="true" 
+                    data-corners="true" 
+                    data-shadow="true" 
+                    data-iconshadow="true" 
+                    data-wrapperels="" 
+                    data-rel="back" 
+                    data-direction="reverse" 
+                    data-theme="a" 
+                    class="ui-btn ui-shadow ui-btn-corner-all ui-btn-inline ui-btn-up-a">Back</a>
+
+                    <a href="#page-3" data-role="button" data-transition="slide" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="" data-theme="a" class="ui-btn ui-shadow ui-btn-corner-all ui-btn-inline ui-btn-up-a">Page 3</a>
+            </div>
+            <div data-role="footer" data-id="footer" data-position="fixed">
+                <div data-role="navbar">
+                     <ul>
+                     <li><a href="#page-home" >Page 1</a></li>
+                     <li><a href="#page-2" data-role="button" data-transition="slide" data-inline="true">Page 2</a></li>
+                     <li><a href="#page-3" >Page 3</a></li>
+                     </ul>
+                </div><!-- /navbar -->
+            </div>
+        </div>
+
+        <div data-role="page" id="page-3">
+            <div data-role="header" data-id="header" data-position="fixed">
+                <h3>Cordova Demo</h1>
+            </div>
+            <div id="content" data-role="content">
+                Im the page number 3
+                <a href="#" data-role="button" data-rel="back" data-transition="slide" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="" data-rel="back" >Back</a>
+            </div>
+            <div data-role="footer" data-id="footer" data-position="fixed">
+                <div data-role="navbar">
+                     <ul>
+                     <li><a href="#">Page 1</a></li>
+                     <li><a href="#">Page 2</a></li>
+                     <li><a href="#">Page 3</a></li>
+                     </ul>
+                </div><!-- /navbar -->
             </div>
         </div>
     </body>
