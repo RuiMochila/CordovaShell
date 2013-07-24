@@ -30,33 +30,36 @@
         .wait(function () {
             // When ALL scripts have been loaded AND executed: 
             
-            $(function() {
-                setTimeout(hideSplash, 2000);
-            });
+            // $(function() {
+            //     setTimeout(hideSplash, 2000);
+            // });
             
-            $(document).on("pagebeforechange", function(e,ob) {
-                console.log($.mobile.urlHistory.stack);
-            //     if(ob.toPage && ob.toPage[0].id === "splash") {
-            //         if(!e.isPropagationStopped()){
-            //             console.log(e);
-            //             e.stopPropagation();
-            //             e.preventDefault();
-            //         }
-            //         //O back to splash fica pendurado aqui e quando carrego a próxima vez ele quer voltar para o splash
-            //     }
-            });
-            function hideSplash() {
-                $.mobile.changePage("#page-home", "fade");
-                $.mobile.urlHistory.stack[0].hash = $.mobile.urlHistory.stack[1].hash
-                $.mobile.urlHistory.stack[0].pageUrl = $.mobile.urlHistory.stack[1].pageUrl
-                $.mobile.urlHistory.stack[0].url = $.mobile.urlHistory.stack[1].url
-                // $.mobile.urlHistory.stack.pop();
-                // $.mobile.urlHistory.stack = $.mobile.urlHistory.stack.slice(1, 2);
-                // $.mobile.urlHistory.activeIndex = $.mobile.urlHistory.activeIndex-1;
-                // console.log($.mobile.urlHistory.stack.slice(1, 2));
-                // console.log($.mobile.urlHistory.stack.slice(1, 2));
-                // $.mobile.urlHistory.stack = $.mobile.urlHistory.stack.slice(1, 2);
-            }                
+            // $(document).on("pagebeforechange", function(e,ob) {
+            //     console.log($.mobile.urlHistory.stack);
+
+            // //     if(ob.toPage && ob.toPage[0].id === "splash") {
+            // //         if(!e.isPropagationStopped()){
+            // //             console.log(e);
+            // //             e.stopPropagation();
+            // //             e.preventDefault();
+            // //         }
+            // //         //O back to splash fica pendurado aqui e quando carrego a próxima vez ele quer voltar para o splash
+            // //     }
+            // });
+            // function hideSplash() {
+            //     $.mobile.changePage("#page-home", "fade");
+            //     window.history.forward();
+            //     // $.mobile.urlHistory.stack[0].hash = $.mobile.urlHistory.stack[1].hash
+            //     // $.mobile.urlHistory.stack[0].pageUrl = $.mobile.urlHistory.stack[1].pageUrl
+            //     // $.mobile.urlHistory.stack[0].url = $.mobile.urlHistory.stack[1].url
+
+            //     // $.mobile.urlHistory.stack.pop();
+            //     // $.mobile.urlHistory.stack = $.mobile.urlHistory.stack.slice(1, 2);
+            //     // $.mobile.urlHistory.activeIndex = $.mobile.urlHistory.activeIndex-1;
+            //     // console.log($.mobile.urlHistory.stack.slice(1, 2));
+            //     // console.log($.mobile.urlHistory.stack.slice(1, 2));
+            //     // $.mobile.urlHistory.stack = $.mobile.urlHistory.stack.slice(1, 2);
+            // }
         });
         </script>
         <title>Hello World</title>
@@ -71,11 +74,13 @@
         
     </head>
     <body> <!-- ponderar usar o onload event -->
-        <div data-role="page" data-theme="b" id="splash" style="background-color: #green;"> 
+         <!--
+        <div data-role="page" id="splash" style="background-color: #green;"> 
             <div class="splash">
-                <img src="http://jquerymobile.com/demos/1.0a4.1/docs/_assets/images/jquery-logo.png" alt="splash" />
+                <img src="img/jquery-logo.png" alt="splash" />
             </div>
         </div>
+        -->
         <div data-role="page" id="page-home">
             <div data-role="header" data-id="header" data-position="fixed">
                 <h3>Cordova Demo</h1>
@@ -83,14 +88,16 @@
             <div id="content" data-role="content">
                 <div id="cordova-output"></div>
                 <div id="jquery-output"></div>
+                <a href="#newMarker" data-role="button" data-rel="dialog" data-transition="pop" data-inline="true" data-corners="true">Create Marker</a>
+
                 <a href="#page-2" data-role="button" data-transition="slide" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true">Page 2</a>
             </div>
             <div data-role="footer" data-id="footer" data-position="fixed">
                 <div data-role="navbar">
                      <ul>
-                     <li><a href="#page-home" >Page 1</a></li>
+                     <li><a href="#page-home" data-transition="pop" data-inline="true">Page 1</a></li>
                      <li><a href="#page-2" data-role="button" data-transition="slide" data-inline="true">Page 2</a></li>
-                     <li><a href="#page-3" >Page 3</a></li>
+                     <li><a href="#page-3" data-role="button" data-transition="slide" data-inline="true">Page 3</a></li>
                      </ul>
                 </div><!-- /navbar -->
             </div>
@@ -112,17 +119,16 @@
                     data-wrapperels="" 
                     data-rel="back" 
                     data-direction="reverse" 
-                    data-theme="a" 
-                    class="ui-btn ui-shadow ui-btn-corner-all ui-btn-inline ui-btn-up-a">Back</a>
+                    >Back</a>
 
-                    <a href="#page-3" data-role="button" data-transition="slide" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="" data-theme="a" class="ui-btn ui-shadow ui-btn-corner-all ui-btn-inline ui-btn-up-a">Page 3</a>
+                    <a href="#page-3" data-role="button" data-transition="slide" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" >Page 3</a>
             </div>
             <div data-role="footer" data-id="footer" data-position="fixed">
                 <div data-role="navbar">
                      <ul>
-                     <li><a href="#page-home" >Page 1</a></li>
+                     <li><a href="#page-home" data-transition="pop" data-inline="true">Page 1</a></li>
                      <li><a href="#page-2" data-role="button" data-transition="slide" data-inline="true">Page 2</a></li>
-                     <li><a href="#page-3" >Page 3</a></li>
+                     <li><a href="#page-3" data-role="button" data-transition="slide" data-inline="true">Page 3</a></li>
                      </ul>
                 </div><!-- /navbar -->
             </div>
@@ -139,11 +145,24 @@
             <div data-role="footer" data-id="footer" data-position="fixed">
                 <div data-role="navbar">
                      <ul>
-                     <li><a href="#page-home" >Page 1</a></li>
+                     <li><a href="#page-home" data-transition="pop" data-inline="true">Page 1</a></li>
                      <li><a href="#page-2" data-role="button" data-transition="slide" data-inline="true">Page 2</a></li>
-                     <li><a href="#page-3" >Page 3</a></li>
+                     <li><a href="#page-3" data-role="button" data-transition="slide" data-inline="true">Page 3</a></li>
                      </ul>
                 </div><!-- /navbar -->
+            </div>
+        </div>
+        
+        <div data-role="page" id="newMarker" data-dom-cache="true"><!-- dialog-->
+            <div data-role="header" data-theme="d">
+                <h1>Create Marker</h1>
+            </div>
+            
+            <div data-role="content" data-theme="d">
+                <p>That was an animated page transition effect to a dialog that we added with a <code>data-transition</code> attribute on the link.</p>
+                <p>Since it uses CSS animations, this should be hardware accelerated on many devices. To see transitions, 3D transform support is required so if you only saw a fade transition that's the reason.</p>
+                
+                <a href="#" data-role="button" data-theme="d" data-rel="back">Take me back</a>   
             </div>
         </div>
     </body>
